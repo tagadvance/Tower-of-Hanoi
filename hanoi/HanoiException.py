@@ -1,0 +1,2 @@
+class HanoiException(Exception):
+    pass
