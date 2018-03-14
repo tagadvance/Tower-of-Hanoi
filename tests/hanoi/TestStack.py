@@ -15,6 +15,13 @@ class TestStack(unittest.TestCase):
         ]
         self.assertEqual(expected, stack._stack)
 
+    def test_isEmpty(self):
+        stack = Stack()
+        self.assertTrue(stack.isEmpty())
+        
+        stack.addDisk(Disk(0))
+        self.assertFalse(stack.isEmpty())
+
     def test_mayAddDisk_withEmptyStack(self):
         stack = Stack()
         
@@ -64,10 +71,8 @@ class TestStack(unittest.TestCase):
     
     def test_removeDisk_withEmptyStack(self):
         stack = Stack()
-        disk = stack.removeDisk()
         
-        expected = None
-        self.assertEqual(expected, disk)
+        self.assertRaises(HanoiException, stack.removeDisk)
         
     def test_removeDisk(self):
         stack = Stack(1)

@@ -15,7 +15,10 @@ class Stack:
             self._stack.append(disk)
     
     def __bool__(self):
-        return self._stack.__bool__()
+        return not self.isEmpty()
+    
+    def isEmpty(self):
+        return len(self._stack) == 0
     
     def mayAddDisk(self, disk):
         if self._stack:
@@ -31,4 +34,7 @@ class Stack:
         self._stack.append(disk)
     
     def removeDisk(self):
-        return self._stack.pop() if self._stack else None
+        if self.isEmpty():
+            raise HanoiException('This stack is empty!')
+        
+        return self._stack.pop()
